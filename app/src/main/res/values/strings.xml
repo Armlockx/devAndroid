@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">O app da rapaziada</string>
+    <string name="helloworld">big shish</string>
+    <string name="username">line1</string>
+    <string name="password">line2</string>
+    <string name="send">Send</string>
+</resources>
