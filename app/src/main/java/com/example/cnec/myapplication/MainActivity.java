@@ -1,5 +1,7 @@
 package com.example.cnec.myapplication;
 
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -62,17 +64,40 @@ public class MainActivity extends AppCompatActivity {
         TextView rato = (TextView) findViewById(R.id.pegaRatao);
 
         String nome = et.getText().toString();
-        String sobrenomenome = pt.getText().toString();
+        String sobrenome = pt.getText().toString();
 
-        tv.setText(nome + " " + sobrenomenome);
+        tv.setText(nome + " " + sobrenome);
 
-        Log.v("teste666!!", nome + " " + sobrenomenome);
-        Log.i("teste666", nome + " " + sobrenomenome);
-        rato.setText(nome + " " + sobrenomenome);
+        Log.v("teste666!!", nome + " " + sobrenome);
+        Log.i("teste666", nome + " " + sobrenome);
+        rato.setText(nome + " " + sobrenome);
 
         //altera o que for escrito na primeira caixa, mas em outro texto
     }
 
+    public void pressButton6(View v){
+        TextView tv = (TextView) findViewById(R.id.tv);
+        EditText et = (EditText) findViewById(R.id.et);
+        EditText pt = (EditText) findViewById(R.id.pt);
+        TextView rato = (TextView) findViewById(R.id.pegaRatao);
+
+        //String nome = et.getText().toString();
+        int nome = Integer.parseInt(et.getText().toString());
+        int sobrenome = Integer.parseInt(pt.getText().toString());
+
+        ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.inicial);
+
+        //cl.setBackgroundColor(Color.parseColor("#BBFF00"));
+
+        if(nome > sobrenome){
+            tv.setText("Nome > sobrenome : " + nome);
+            cl.setBackgroundColor(Color.GREEN);
+            //rato.setText(nome + " " + sobrenome);
+        }
+        else{
+            tv.setText("Sobrenome > nome : " + sobrenome);
+            //cl.setBackgroundColor(Color.parseColor(""));
+            cl.setBackgroundColor(Color.WHITE);
+        }
+    }
 }
-
-
