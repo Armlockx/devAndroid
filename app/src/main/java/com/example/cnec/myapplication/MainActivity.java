@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import static java.sql.Types.NULL;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,14 +94,102 @@ public class MainActivity extends AppCompatActivity {
         //cl.setBackgroundColor(Color.parseColor("#BBFF00"));
 
         if(nome > sobrenome){
-            tv.setText("Nome > sobrenome : " + nome);
+            rato.setText("Nome > sobrenome : " + nome);
             cl.setBackgroundColor(Color.GREEN);
             //rato.setText(nome + " " + sobrenome);
         }
         else{
-            tv.setText("Sobrenome > nome : " + sobrenome);
-            //cl.setBackgroundColor(Color.parseColor(""));
-            cl.setBackgroundColor(Color.WHITE);
+            if(nome == sobrenome){
+                rato.setText("Igual, nome: " + nome + "                           sobrenome: " + sobrenome);
+                cl.setBackgroundColor(Color.parseColor("#ffff11"));
+            }else{
+                rato.setText("Sobrenome > nome : " + sobrenome);
+                //cl.setBackgroundColor(Color.parseColor(""));
+                cl.setBackgroundColor(Color.WHITE);
+            }
         }
+    }
+
+    public void pressButton7(View v){
+        TextView tv = (TextView) findViewById(R.id.tv);
+        EditText et = (EditText) findViewById(R.id.et);
+        EditText pt = (EditText) findViewById(R.id.pt);
+        TextView rato = (TextView) findViewById(R.id.pegaRatao);
+
+        int nome = Integer.parseInt(et.getText().toString());
+        int sobrenome = Integer.parseInt(pt.getText().toString());
+
+        ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.inicial);
+
+        int resultado = nome + sobrenome;
+
+        if(nome == NULL){
+            if(sobrenome == NULL){
+                rato.setText(":::NULLSHIT::: ");
+            }
+            else{
+                rato.setText("Valor: " + resultado);
+            }
+        }
+        else{
+            rato.setText("Valor: " + resultado);
+        }
+    }
+
+    public void pressButton8(View v){
+        TextView tv = (TextView) findViewById(R.id.tv);
+        EditText et = (EditText) findViewById(R.id.et);
+        EditText pt = (EditText) findViewById(R.id.pt);
+        TextView rato = (TextView) findViewById(R.id.pegaRatao);
+
+        ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.inicial);
+
+        String nome = et.getText().toString();
+
+        if(nome.length() > 0){
+            rato.setText("Tamanho do nome: " + nome.length());
+        }
+        else{
+            rato.setText("Nome NULL");
+        }
+
+    }
+
+    public void pressButton9(View v){
+        TextView tv = (TextView) findViewById(R.id.tv);
+        EditText et = (EditText) findViewById(R.id.et);
+        EditText pt = (EditText) findViewById(R.id.pt);
+        TextView rato = (TextView) findViewById(R.id.pegaRatao);
+
+        ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.inicial);
+
+        String nome = et.getText().toString();
+
+        if(nome.length() > 0){
+            rato.setText("Tamanho do nome: " + nome.length());
+            int x;
+            for(x = 0; x < 10; x++){
+                Log.i("teste666", " " + nome + ", " + x);
+            }
+
+        }
+        else{
+            rato.setText("Nome NULL");
+        }
+
+    }
+
+    public void pressButton10(View v){
+        TextView tv = (TextView) findViewById(R.id.tv);
+        EditText et = (EditText) findViewById(R.id.et);
+        EditText pt = (EditText) findViewById(R.id.pt);
+        TextView rato = (TextView) findViewById(R.id.pegaRatao);
+
+        ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.inicial);
+
+        int salario = Integer.parseInt(et.getText().toString());
+
+
+
     }
 }
