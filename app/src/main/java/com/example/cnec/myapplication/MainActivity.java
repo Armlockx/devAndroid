@@ -1,5 +1,6 @@
 package com.example.cnec.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
@@ -7,13 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.nio.file.Files;
 
 import static java.sql.Types.NULL;
 
@@ -29,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calculadora = (Button) findViewById(R.id.calc);
-        inss = (Button) findViewById(R.id.inss);
+        ConstraintLayout inicial = findViewById(R.id.inicial);
+        registerForContextMenu(inicial);
 
+        //
+        calculadora = (Button) findViewById(R.id.calc);
         calculadora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //
+        inss = (Button) findViewById(R.id.inss);
         inss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,22 +61,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_principal, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.iInss:
-                Toast.makeText(getApplicationContext(), "INSS", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Calculadora", Toast.LENGTH_LONG).show();
                 Intent intentCalc = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(intentCalc);
                 break;
             case R.id.iCalc:
-                Toast.makeText(getApplicationContext(), "Sair", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "INSS", Toast.LENGTH_LONG).show();
                 Intent intentInss = new Intent(MainActivity.this, Main3Activity.class );
                 startActivity(intentInss);
                 break;
@@ -75,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void pressButton(View v){
         Log.v("teste1", "mensagem do teste1");
