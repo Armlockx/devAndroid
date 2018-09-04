@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">O app da rapaziada</string>
-    <string name="helloworld">Faz a conta ae bro</string>
+    <string name="helloworld">O app da rapaziada</string>
+    <string name="calcinss">Calcular INSS</string>
     <string name="username">line1</string>
     <string name="password">line2</string>
-    <string name="send">Testá</string>
+    <string name="send">+++</string>
+    <string name="send2">---</string>
+    <string name="calc">Calculadora</string>
+    <string name="inss">INSS</string>
+    <string name="sal">Seu salário</string>
+    <string name="ass">VOSE CHEGO NA PAGINA 2 CUZAOOO</string>
+
 </resources>
