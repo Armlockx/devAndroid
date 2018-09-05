@@ -5,9 +5,6 @@
         android:id="@+id/iCalc"
         android:title="@string/calc" />
     <item
-        android:id="@+id/iInss"
-        android:title="@string/inss" />
-    <item
         android:id="@+id/iVoltar"
         android:title="@string/main" />
 </menu>

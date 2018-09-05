@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ConstraintLayout inicial = findViewById(R.id.inicial);
-        registerForContextMenu(inicial);
+        ConstraintLayout inicial = findViewById(R.id.inicial); //Necessário para
+        registerForContextMenu(inicial);                       //usar Toaster
 
-        //
+        // //==========================// //
         calculadora = (Button) findViewById(R.id.calc);
         calculadora.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //
+        // //==========================// //
         inss = (Button) findViewById(R.id.inss);
         inss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,38 +59,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+        // //==========================// //
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
-    }
+    }                                                            //Infla o menu_principal ao segurar na tela
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        getMenuInflater().inflate(R.menu.menu_principal, menu);     //Necessario para mostrar o menu_principal nos "..."
         return true;
     }
 
-
-
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.iInss:
+    public boolean onOptionsItemSelected(MenuItem item){          //Necessário para trocar de activty
+        switch (item.getItemId()){                                //através do menu "..." usando SWITCH
+            case R.id.iCalc:
                 Toast.makeText(getApplicationContext(), "Calculadora", Toast.LENGTH_LONG).show();
                 Intent intentCalc = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(intentCalc);
                 break;
-            case R.id.iCalc:
+            case R.id.iInss:
                 Toast.makeText(getApplicationContext(), "INSS", Toast.LENGTH_LONG).show();
                 Intent intentInss = new Intent(MainActivity.this, Main3Activity.class );
                 startActivity(intentInss);
+                break;
+            case R.id.iVoltar:
+                Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
+                Intent intentVoltar = new Intent(MainActivity.this, MainActivity.class);
                 break;
         }
         return true;
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void pressButton(View v){
         Log.v("teste1", "mensagem do teste1");
@@ -281,7 +284,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /////////////////////////////////////////////////////////////
+    /*////////////////////////////////////////////////////////////
+
     public void somar(View v){
         TextView tv = (TextView) findViewById(R.id.tv);
         EditText et = (EditText) findViewById(R.id.numero1);
